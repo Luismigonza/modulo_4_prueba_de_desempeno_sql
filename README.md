@@ -33,7 +33,7 @@ docker-compose up -d
 npm run dev
 ```
 ## API Endpoints
----
+
 
 1. Mass Migration
     * **POST** `/api/migration`
@@ -48,12 +48,3 @@ npm run dev
     * **GET** `/api/bi/suppliers` - Returns top suppliers ordered by item volume and calculates total inventory value.
     * **GET** `/api/bi/customers/:customerId/history` - Returns the detailed purchase history for a specific customer.
     * **GET** `/api/bi/categories/:categoryId/stars` - Identifies top-selling products within a specific category based on total revenue generated.
-
-## Bonus: Ubuntu Server Installation Guide
----
-To prepare a fresh Ubuntu environment for this project, run:
-
-sudo apt update && sudo apt upgrade -y
-curl -fsSL [https://deb.nodesource.com/setup_18.x](https://deb.nodesource.com/setup_18.x) | sudo -E bash -
-sudo apt install -y nodejs docker.io docker-compose
-sudo systemctl enable --now docker
