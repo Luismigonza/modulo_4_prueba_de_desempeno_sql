@@ -1,0 +1,72 @@
+[{
+  "_id": {
+    "$oid": "69a61c14ec1afc587381cfc0"
+  },
+  "action": "DELETE",
+  "entity": "products",
+  "deleted_data": {
+    "product_sku": "USB-KIN-64",
+    "product_name": "USB Kingston 64GB",
+    "unit_price": "45000.00",
+    "category_id": 2,
+    "supplier_id": 2
+  },
+  "timestamp": {
+    "$date": "2026-03-02T23:24:04.722Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a636a9d16115d9ec37827e"
+  },
+  "action": "CREATE",
+  "entity": "products",
+  "data": {
+    "product_sku": "SKU-NUEVO2-01",
+    "product_name": "Diademas Gamer Pro",
+    "unit_price": 825.5,
+    "category_id": 1,
+    "supplier_id": 1
+  },
+  "timestamp": {
+    "$date": "2026-03-03T01:17:29.834Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a636ffd16115d9ec378280"
+  },
+  "action": "UPDATE",
+  "entity": "products",
+  "data": {
+    "sku": "SKU-NUEVO-01",
+    "product_name": "Diademas Gamer Pro- eltra",
+    "unit_price": 99.99,
+    "category_id": 1,
+    "supplier_id": 1
+  },
+  "timestamp": {
+    "$date": "2026-03-03T01:18:55.917Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69a6378fd16115d9ec378282"
+  },
+  "action": "UPDATE",
+  "entity": "products",
+  "data": {
+    "sku": "LMP-LED-001",
+    "product_name": "Lampara LED Escritorio reforzado",
+    "unit_price": 99.99,
+    "category_id": 4,
+    "supplier_id": 8
+  },
+  "timestamp": {
+    "$date": "2026-03-03T01:21:19.934Z"
+  },
+  "__v": 0
+}]
