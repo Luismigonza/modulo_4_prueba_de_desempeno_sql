@@ -11,7 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-connectMongo(); // Conecta a MongoDB
+connectMongo(); // Connect to MongoDB
 
 app.use('/api/migration', migrationRoutes);
 app.use('/api/products', productRoutes);

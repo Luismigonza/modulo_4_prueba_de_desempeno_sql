@@ -1,5 +1,5 @@
 const pool = require('../config/mysql');
-const { logAction } = require('../models/auditlog'); // <-- Importamos la nueva función
+const { logAction } = require('../models/auditlog'); 
 
 exports.getAllProducts = async (req, res) => {
     try {
@@ -16,7 +16,7 @@ exports.createProduct = async (req, res) => {
             [product_sku, product_name, unit_price, category_id, supplier_id]
         );
         
-        // AUDITORÍA MONGODB: Registro de Creación
+        // MONGODB AUDIT: Creation Log
         await logAction('CREATE', 'products', req.body);
 
         res.status(201).json({ message: 'Producto creado exitosamente y auditado' });
@@ -34,7 +34,7 @@ exports.updateProduct = async (req, res) => {
         
         if (result.affectedRows === 0) return res.status(404).json({ message: 'Producto no encontrado' });
         
-        // AUDITORÍA MONGODB: Registro de Actualización
+        // MONGODB AUDIT: Update Log
         await logAction('UPDATE', 'products', { sku, ...req.body });
 
         res.json({ message: 'Producto actualizado exitosamente y auditado' });
@@ -50,7 +50,7 @@ exports.deleteProduct = async (req, res) => {
         await pool.query('DELETE FROM transaction_details WHERE product_sku = ?', [sku]);
         await pool.query('DELETE FROM products WHERE product_sku = ?', [sku]);
 
-        // AUDITORÍA MONGODB: Registro de Borrado
+        // MONGODB AUDIT: Deletion Log
         await logAction('DELETE', 'products', product[0]);
 
         res.json({ message: 'Producto eliminado en MySQL y registrado en MongoDB' });

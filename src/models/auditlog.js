@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
 const auditSchema = new mongoose.Schema({
-    action: { type: String, required: true }, // Aquí diremos si fue CREATE, UPDATE o DELETE
+    action: { type: String, required: true }, 
     entity: { type: String, required: true },
-    data: { type: Object, required: true },   // Cambiamos "deleted_data" por solo "data"
+    data: { type: Object, required: true },   
     timestamp: { type: Date, default: Date.now }
 });
 
 const AuditLog = mongoose.model('audit_logs', auditSchema);
 
-// Función universal para registrar cualquier acción
+// Universal function to record any action
 const logAction = async (action, entity, data) => {
     try {
         await AuditLog.create({ action, entity, data });

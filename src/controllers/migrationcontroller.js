@@ -12,9 +12,9 @@ exports.uploadMasterFile = async (req, res) => {
         .on('end', async () => {
             try {
                 for (let row of results) {
-                    if (!row.transaction_id) continue; // Salta filas vacías
+                    if (!row.transaction_id) continue; 
 
-                    // 1. Inserción Idempotente (Evita duplicados con INSERT IGNORE)
+                    // 1. Avoid duplicates with INSERT IGNORE
                     await pool.query('INSERT IGNORE INTO customers (customer_name, customer_email, customer_address, customer_phone) VALUES (?, ?, ?, ?)', 
                         [row.customer_name, row.customer_email, row.customer_address, row.customer_phone]);
                     
@@ -24,17 +24,17 @@ exports.uploadMasterFile = async (req, res) => {
                     await pool.query('INSERT IGNORE INTO categories (product_category) VALUES (?)', 
                         [row.product_category]);
 
-                    // 2. Inserción de Productos (Relacionando con subconsultas)
+                    // 2. Relating to subqueries
                     await pool.query(`INSERT IGNORE INTO products (product_sku, product_name, unit_price, category_id, supplier_id) 
                         VALUES (?, ?, ?, (SELECT id FROM categories WHERE product_category = ?), (SELECT id FROM suppliers WHERE supplier_email = ?))`, 
                         [row.product_sku, row.product_name, row.unit_price, row.product_category, row.supplier_email]);
 
-                    // 3. Inserción de Transacciones
+                    // 3. Transaction Insertion
                     await pool.query(`INSERT IGNORE INTO transactions (transaction_id, date, customer_id) 
                         VALUES (?, ?, (SELECT id FROM customers WHERE customer_email = ?))`, 
                         [row.transaction_id, row.date, row.customer_email]);
 
-                    // 4. Inserción de Detalles
+                    // 4. Inserting Details
                     await pool.query('INSERT IGNORE INTO transaction_details (transaction_id, product_sku, quantity, total_line_value) VALUES (?, ?, ?, ?)', 
                         [row.transaction_id, row.product_sku, row.quantity, row.total_line_value]);
                 }
