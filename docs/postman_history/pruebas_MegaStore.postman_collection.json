@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "c19a7824-1ed3-4597-bd47-0b34c1f8ddfd",
+		"name": "pruebas_MegaStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34935319"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/api/migration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/home/cohorte5/Música/migration.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/migration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"migration"
+					]
+				},
+				"description": "Migracion de toda la db en un solo archivo csv"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/products",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"product_sku\": \"SKU-NUEVO-012\",\n  \"product_name\": \"Teclado eltra Mecánico RGB\",\n  \"unit_price\": 85.50,\n  \"category_id\": 1,\n  \"supplier_id\": 1\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products"
+					]
+				},
+				"description": "Producto agregado a mano"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/products",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"product_name\": \"Teclado Mecánico RGB - Versión Pro\",\n  \"unit_price\": 99.99,\n  \"category_id\": 1,\n  \"supplier_id\": 1\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/products/SKU-NUEVO-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products",
+						"SKU-NUEVO-01"
+					]
+				},
+				"description": "producto actualizado a mano"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/products",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"product_sku\": \"SKU-NUEVO-012\",\n  \"product_name\": \"Teclado eltra Mecánico RGB\",\n  \"unit_price\": 85.50,\n  \"category_id\": 1,\n  \"supplier_id\": 1\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products"
+					]
+				},
+				"description": "producto creado a mano"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products"
+					]
+				},
+				"description": "Funcion para ver todos los productos"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/bi/suppliers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/bi/suppliers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"bi",
+						"suppliers"
+					]
+				},
+				"description": "tarea \"Análisis de Proveedores\""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/bi/customers/1/history",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/bi/customers/1/history",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"bi",
+						"customers",
+						"1",
+						"history"
+					]
+				},
+				"description": "Funcion de \"Historial de un Cliente\""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/bi/categories/1/stars",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/bi/categories/1/stars",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"bi",
+						"categories",
+						"1",
+						"stars"
+					]
+				},
+				"description": "Funcionalidad de \"Productos Estrella por Categoría\""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/products",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"product_sku\": \"SKU-NUEVO2-01\",\n  \"product_name\": \"Diademas Gamer Pro\",\n  \"unit_price\": 825.50,\n  \"category_id\": 1,\n  \"supplier_id\": 1\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products"
+					]
+				},
+				"description": "Producto creado con auditoria en mongo"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/products/LMP-LED-001",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"product_name\": \"Lampara LED Escritorio reforzado\",\n  \"unit_price\": 99.99,\n  \"category_id\": 4,\n  \"supplier_id\": 8\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/products/LMP-LED-001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products",
+						"LMP-LED-001"
+					]
+				},
+				"description": "Producto Editado con auditoria en mongoDB"
+			},
+			"response": []
+		}
+	]
+}

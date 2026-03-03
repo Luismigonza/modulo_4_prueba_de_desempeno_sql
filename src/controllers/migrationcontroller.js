@@ -7,7 +7,7 @@ exports.uploadMasterFile = async (req, res) => {
 
     const results = [];
     fs.createReadStream(req.file.path)
-        .pipe(csv({ separator: ',', mapHeaders: ({ header }) => header.trim() })) // Ajusta a ';' si tu CSV lo necesita
+        .pipe(csv({ separator: ',', mapHeaders: ({ header }) => header.trim() }))
         .on('data', (data) => results.push(data))
         .on('end', async () => {
             try {
