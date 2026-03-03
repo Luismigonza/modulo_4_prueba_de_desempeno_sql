@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: megastore_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: megastore_db
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  mongo-db:
+    image: mongo:latest
+    container_name: megastore_mongo
+    restart: always
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mysql_data:
+  mongo_data:
