@@ -47,3 +47,9 @@ CREATE TABLE transaction_details (
     FOREIGN KEY (transaction_id) REFERENCES transactions(transaction_id),
     FOREIGN KEY (product_sku) REFERENCES products(product_sku)
 );
+
+CREATE VIEW vw_inventory_summary AS
+SELECT p.product_name, c.product_category, s.supplier_name, p.unit_price
+FROM products p
+JOIN categories c ON p.category_id = c.id
+JOIN suppliers s ON p.supplier_id = s.id;
